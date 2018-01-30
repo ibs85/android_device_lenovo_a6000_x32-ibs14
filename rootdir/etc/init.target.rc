@@ -69,9 +69,16 @@ on property:sys.sensors.acc=*
 
 on property:sys.boot_completed=1
     write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
-    write /sys/module/process_reclaim/parameters/pressure_min 50
     write /sys/module/process_reclaim/parameters/pressure_max 70
-    write /sys/module/process_reclaim/parameters/per_swap_size 512
     write /sys/module/process_reclaim/parameters/swap_opt_eff 30
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
+    write /sys/module/process_reclaim/parameters/pressure_min 50
+    write /sys/module/process_reclaim/parameters/per_swap_size 512
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
+    write /sys/module/lowmemorykiller/parameters/minfree "3840,5120,5120,12800,28160,40960"
+    write /proc/sys/vm/min_free_kbytes 2919
+	write /proc/sys/vm/swappiness 100	
+    write /proc/sys/vm/extra_free_kbyte 6075
+    restart ril-daemon
+    restart netmgrd
     swapon_all fstab.qcom
-
