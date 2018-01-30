@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit Full Phone.
 $(call inherit-product, device/lenovo/a6000/full_a6000.mk)
 
 # Inherit some common AOSPA stuff.
