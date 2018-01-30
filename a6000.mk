@@ -15,6 +15,9 @@
 # Inherit Full Phone.
 $(call inherit-product, device/lenovo/a6000/full_a6000.mk)
 
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
 # Inherit some common AOSPA stuff.
 $(call inherit-product, vendor/pa/main.mk)
 
