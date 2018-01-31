@@ -1,12 +1,18 @@
-MAX_EGL_CACHE_KEY_SIZE := 12*1024
-MAX_EGL_CACHE_SIZE := 2048*1024
+# Display
+PRODUCT_PACKAGES += \
+    copybit.msm8916 \
+    gralloc.msm8916 \
+    hwcomposer.msm8916 \
+    libtinyxml \
+    memtrack.msm8916
 
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+# Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.composition.type=c2d \
+    debug.mdpcomp.idletime=600 \
+    persist.hwc.mdpcomp.enable=true \
+    persist.hwc.ptor.enable=true \
+    debug.enable.sglscale=1
 
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
-TARGET_CONTINUOUS_SPLASH_ENABLED := true
-TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
-TARGET_USES_C2D_COMPOSITION := true
-TARGET_USES_ION := true
-USE_OPENGL_RENDERER := true
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196608
